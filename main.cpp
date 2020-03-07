@@ -4,32 +4,29 @@
 #include <string>
 #include <map>
 #include <algorithm>
+#include <bits/stdc++.h> 
 using namespace std;
 
-std::multimap<string, string> dictionary;
-
-
-bool wordexist(string word){
-    for (std::multimap<string,string>::iterator it=dictionary.begin(); it!=dictionary.end(); ++it){
-        if ((*it).first == word)
-            return true;
-        else return false;
-    };
-}
+typedef std::multimap<string, string> dictionary;
+dictionary m;
 
 int main() {
     string txt;  
     string line;
-    ifstream myfile ("test.txt");
-    if (myfile.is_open()){
-        while ( myfile.good() ){
-            getline (myfile,line);
-
-            if (wordexist){
-            }
-            else{};
-        myfile.close();
-        }
+    std::vector<string> words;
+    cout<<"逐词读取, 词之间用空格区分"<<endl;
+    ifstream fin( "test.txt" );  
+    string  s;  
+    while ( fin >> s ){
+        words.push_back(s);
     }
-    else cout << "Unable to open file"; 
+    for (int i=0; i < words.size() - 1; i++){
+            m.insert(pair<string, string>(words[i], words[i + 1]));
+    }
+    dictionary::iterator iter = m.find("test");
+    cout << iter->first << " " << iter->second <<endl;
+
 }
+
+    
+
