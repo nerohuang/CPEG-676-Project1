@@ -10,6 +10,7 @@ using namespace std;
 typedef std::multimap<string, string> dictionary;
 dictionary m;
 
+// random number generator
 int rand_x(int x){
 	return rand()%x;
 }
@@ -31,8 +32,13 @@ int main() {
 	
 	
 	std::string pick = "";
-	int i = 0;
-	while (i < 100){
+	int i = 0; 
+	int num;
+	cout << "please enter how may words you want to generate: ";
+	cin >> num;
+
+	while (i < num){
+		//generate random number
 		srand((unsigned)time(NULL));
 		int rand_index = rand_x(m.count(iter->first));
 		dictionary::iterator it = m.find(iter->first);
