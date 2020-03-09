@@ -4,7 +4,9 @@
 #include <string>
 #include <map>
 #include <algorithm>
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
+#include <random>
+
 using namespace std;
 
 typedef std::multimap<string, string> dictionary;
@@ -12,7 +14,8 @@ dictionary m;
 
 // random number generator
 int rand_x(int x){
-	return rand()%x;
+	std::random_device rd;
+	return rd()%x;
 }
 
 int main() {
@@ -39,7 +42,6 @@ int main() {
 
 	while (i < num){
 		//generate random number
-		srand((unsigned)time(NULL));
 		int rand_index = rand_x(m.count(iter->first));
 		dictionary::iterator it = m.find(iter->first);
 		for (int j=0; j<=rand_index; j++, it++){
