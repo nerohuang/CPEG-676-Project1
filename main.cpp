@@ -22,12 +22,13 @@ int main() {
     string txt;  
     string line;
     std::vector<string> words;
-    ifstream fin( "test.txt" );  
+    ifstream fin( "us_constitution.txt" );  
     string  s;  
     while ( fin >> s ){
         words.push_back(s);
     }
-    for (int i=0; i < words.size() - 1; i++){
+    m.insert(pair<string, string>("test", words[1]));
+    for (int i=1; i < words.size(); i++){
             m.insert(pair<string, string>(words[i], words[i + 1]));
     }
     dictionary::iterator iter = m.find("test");
